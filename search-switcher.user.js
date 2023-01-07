@@ -20,6 +20,7 @@
 // @include             search.bilibili.com/*
 // @include             github.com/search?*
 // @include             *.google.com/search?*
+// @include             yandex.com/search/?*
 // @include             /^https?://[a-z]+\.google\.[a-z,\.]+/.+$/
 // @grant               none
 // @run-at              document_body
@@ -27,14 +28,6 @@
 
 {
   const sites = [
-    {
-      name: "Baidu",
-      host: "baidu.com",
-      link: "https://www.baidu.com/s",
-      key: "wd",
-      element: ".wrapper_new #s_tab .s_tab_inner",
-      hide: false,
-    },
     {
       name: "Bing",
       host: "bing.com",
@@ -59,11 +52,27 @@
       hide: true,
     },
     {
+      name: "Baidu",
+      host: "baidu.com",
+      link: "https://www.baidu.com/s",
+      key: "wd",
+      element: ".wrapper_new #s_tab .s_tab_inner",
+      hide: false,
+    },
+    {
       name: "Bili",
       host: "bilibili.com",
       link: "https://search.bilibili.com/all",
       key: "keyword",
       element: ".vui_tabs--navbar .vui_tabs--nav",
+      hide: false,
+    },
+    {
+      name: "Yandex",
+      host: "yandex.com",
+      link: "https://yandex.com/search/?",
+      key: "text",
+      element: ".navigation .navigation__region",
       hide: false,
     },
   ];
@@ -72,7 +81,6 @@
       #search-switcher-parent {
         display: inline-block;
       }
-  
       .search-switcher .search-list a {
         padding: 4px 10px;
         margin: 0 5px;
@@ -81,8 +89,13 @@
         border-radius: 100px;
         color: #86a1b5;
       }
+
       .search-switcher.Bing a {
         padding: 0 10px;
+      }
+      .search-switcher.Yandex {
+        position: relative;
+        top: 3px;
       }
       `;
 
