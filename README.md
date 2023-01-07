@@ -6,7 +6,7 @@ Add links to each other in search engines. Including multiple search modes.
 
 ## Download & Installnation
 
-First you need a userscript add-on, such as [Tampermonkey](https://www.tampermonkey.net/), [ScriptCat](https://github.com/scriptscat/scriptcat), [Violentmonkey](https://violentmonkey.github.io/), etc.
+First you need a userscript extension on your desktop broswer, such as [Tampermonkey](https://www.tampermonkey.net/), [ScriptCat](https://github.com/scriptscat/scriptcat), [Violentmonkey](https://violentmonkey.github.io/), etc.
 
 Then click the download button below:
 
