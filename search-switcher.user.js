@@ -10,7 +10,7 @@
 // @license             MIT
 // @date                01/06/2023
 // @modified            01/07/2023
-// @version             1.0.0
+// @version             1.0.1
 // @namespace           https://blog.cworld.top
 // @downloadURL         https://raw.githubusercontent.com/cworld1/search-switcher/main/search-switcher.user.js
 // @updateURL           https://raw.githubusercontent.com/cworld1/search-switcher/main/search-switcher.user.js
