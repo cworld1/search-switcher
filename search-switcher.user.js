@@ -10,7 +10,7 @@
 // @license             MIT
 // @date                01/06/2023
 // @modified            01/07/2023
-// @version             1.0.1
+// @version             1.0.2
 // @namespace           https://blog.cworld.top
 // @downloadURL         https://raw.githubusercontent.com/cworld1/search-switcher/main/search-switcher.user.js
 // @updateURL           https://raw.githubusercontent.com/cworld1/search-switcher/main/search-switcher.user.js
@@ -20,6 +20,7 @@
 // @include             search.bilibili.com/*
 // @include             github.com/search?*
 // @include             *.google.com/search?*
+// @include             *.google.com.hk/search?*
 // @include             yandex.com/search/?*
 // @include             /^https?://[a-z]+\.google\.[a-z,\.]+/.+$/
 // @grant               none
@@ -49,7 +50,8 @@
       host: "github.com",
       link: "https://github.com/search",
       key: "q",
-      hide: true,
+      element: ".search-with-dialog",
+      hide: false,
     },
     {
       name: "Baidu",
@@ -67,14 +69,14 @@
       element: ".vui_tabs--navbar .vui_tabs--nav",
       hide: false,
     },
-    {
-      name: "Yandex",
-      host: "yandex.com",
-      link: "https://yandex.com/search/?",
-      key: "text",
-      element: ".navigation .navigation__region",
-      hide: false,
-    },
+    // {
+    //   name: "Yandex",
+    //   host: "yandex.com",
+    //   link: "https://yandex.com/search/?",
+    //   key: "text",
+    //   element: ".navigation .navigation__region",
+    //   hide: false,
+    // },
   ];
 
   const css = `
