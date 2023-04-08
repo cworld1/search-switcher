@@ -6,22 +6,22 @@
 // @description:zh-CN   在常用的搜索引擎页面中添加互相切换的按钮。
 // @description:zh-TW   在常用的搜索引擎頁面中添加互相切換的按鈕。
 // @author              CWorld
-// @icon                https://i.328888.xyz/2023/01/07/kOpA5.png
+// @icon                https://img1.imgtp.com/2023/04/08/OQaKGk8j.png
 // @license             MIT
 // @date                01/06/2023
 // @modified            01/07/2023
-// @version             1.0.2
+// @version             1.0.3
 // @namespace           https://blog.cworld.top
 // @downloadURL         https://raw.githubusercontent.com/cworld1/search-switcher/main/search-switcher.user.js
 // @updateURL           https://raw.githubusercontent.com/cworld1/search-switcher/main/search-switcher.user.js
 // @include             *.baidu.com/*
 // @include             *.bing.com/*
 // @include             *.zhihu.com/search?*
-// @include             search.bilibili.com/*
-// @include             github.com/search?*
+// @include             https://search.bilibili.com/*
+// @include             https://github.com/search?*
 // @include             *.google.com/search?*
 // @include             *.google.com.hk/search?*
-// @include             yandex.com/search/?*
+// @include             https://yandex.com/search/?*
 // @include             /^https?://[a-z]+\.google\.[a-z,\.]+/.+$/
 // @grant               none
 // @run-at              document_body
@@ -32,7 +32,7 @@
     {
       name: "Bing",
       host: "bing.com",
-      link: "https://bing.com/search",
+      link: "https://www.bing.com/search",
       key: "q",
       element: ".b_scopebar ul",
       hide: false,
@@ -69,14 +69,14 @@
       element: ".vui_tabs--navbar .vui_tabs--nav",
       hide: false,
     },
-    // {
-    //   name: "Yandex",
-    //   host: "yandex.com",
-    //   link: "https://yandex.com/search/?",
-    //   key: "text",
-    //   element: ".navigation .navigation__region",
-    //   hide: false,
-    // },
+    {
+      name: "Yandex",
+      host: "yandex.com",
+      link: "https://yandex.com/search/?",
+      key: "text",
+      element: ".navigation .navigation__region",
+      hide: false,
+    },
   ];
 
   const css = `
@@ -89,11 +89,15 @@
         background-color: #ffffff1a;
         text-decoration: none;
         border-radius: 100px;
-        color: #86a1b5;
+        color: #a5b9c6;
       }
 
       .search-switcher.Bing a {
         padding: 0 10px;
+      }
+      .search-switcher.Baidu a {
+        padding: 0;
+        background: transparent;
       }
       .search-switcher.Yandex {
         position: relative;
