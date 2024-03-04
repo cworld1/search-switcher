@@ -26,4 +26,4 @@ If you need to edit the search supporting-list, you can edit script by yourself.
 
 ## License
 
-The MIT License.
+The GPL-3 License.
