@@ -109,10 +109,15 @@
     // console.log("location:", location.href);
     let curSite;
     for (let site of sites) {
-      if (location.host.includes(site.host)) {
+      if (
+        location.hostname === site.host ||
+        location.hostname.endsWith("." + site.host)
+      ) {
         curSite = site;
+        break;
       }
     }
+    if (!curSite) return;
     let siteList = sites.filter(
       ({ host, hide }) => !location.hostname.includes(host) && !hide
     );
