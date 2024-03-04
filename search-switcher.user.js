@@ -178,6 +178,7 @@
       _href = current_href;
     }
     setTimeout(init, 2000);
+    return true;
   })();
 }
 // end userScript
