@@ -83,14 +83,17 @@
   const css = `
       #search-switcher-parent {
         display: inline-block;
+        justify-content: center;
+        align-items: center;
       }
       .search-switcher .search-list a {
-        padding: 4px 10px;
-        margin: 0 5px;
+        padding: 6px 10px;
+        margin: 0 5px !important;
         background-color: #ffffff1a;
         text-decoration: none;
         border-radius: 100px;
         color: #a5b9c6;
+        display: inline-block;
       }
 
       .search-switcher.Bing a {
