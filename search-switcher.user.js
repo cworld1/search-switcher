@@ -6,7 +6,7 @@
 // @description:zh-CN   在常用的搜索引擎页面中添加互相切换的按钮。
 // @description:zh-TW   在常用的搜索引擎頁面中添加互相切換的按鈕。
 // @author              CWorld
-// @icon                https://img1.imgtp.com/2023/04/08/OQaKGk8j.png
+// @icon                https://www.freeiconspng.com/uploads/search-icon-png-21.png
 // @license             MIT
 // @date                01/06/2023
 // @modified            01/07/2023
