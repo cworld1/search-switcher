@@ -30,17 +30,17 @@
 {
   const sites = [
     {
-      name: "Bing",
-      host: "bing.com",
-      link: "https://www.bing.com/search",
-      key: "q",
-      element: ".b_scopebar ul",
-      hide: false,
+      name: "Bing", // 显示名称
+      host: "bing.com", // 应用域名（新增的话上面的 include 也要写）
+      link: "https://www.bing.com/search?q=%s", // 跳转的搜索链接（用 %s 替代关键词）
+      key: "q", // 关键词对应的键，用于提取关键词（不写的话默认为q）
+      element: ".b_scopebar ul", // 插入位置
+      hide: false, // 是否隐藏
     },
     {
       name: "Google",
       host: "google.com",
-      link: "https://www.google.com/search",
+      link: "https://www.google.com/search?q=%s",
       key: "q",
       element: "#top_nav #hdtb-msb",
       hide: false,
@@ -48,7 +48,7 @@
     {
       name: "Github",
       host: "github.com",
-      link: "https://github.com/search",
+      link: "https://github.com/search?q=%s",
       key: "q",
       element: ".search-with-dialog",
       hide: false,
@@ -56,15 +56,15 @@
     {
       name: "Baidu",
       host: "baidu.com",
-      link: "https://www.baidu.com/s",
-      key: "wd",
+      link: "https://www.baidu.com/s?wd=%s",
       element: ".wrapper_new #s_tab .s_tab_inner",
+      key: "wd",
       hide: false,
     },
     {
       name: "Bili",
       host: "bilibili.com",
-      link: "https://search.bilibili.com/all",
+      link: "https://search.bilibili.com/all?keyword=%s",
       key: "keyword",
       element: ".vui_tabs--navbar .vui_tabs--nav",
       hide: false,
@@ -72,7 +72,7 @@
     {
       name: "Yandex",
       host: "yandex.com",
-      link: "https://yandex.com/search/?",
+      link: "https://yandex.com/search/?text=%s",
       key: "text",
       element: ".navigation .navigation__region",
       hide: false,
@@ -141,12 +141,14 @@
       // 生成切换框
       switcherParent = document.createElement("div");
       switcherParent.setAttribute("id", switcherParentId);
-    //   console.log("body.appendChild:", switcherParent);
-      document.querySelector(curSite.element).appendChild(switcherParent);
+      // console.log("body.appendChild:", switcherParent);
+      const parentElement = document.querySelector(curSite.element);
+      if (!parentElement) return;
+      parentElement.appendChild(switcherParent);
     }
-    const siteTag = ({ link, name, key }) => {
-      let href = `${link}?${key}=${query}`;
-    //   console.log("href:", href);
+    const siteTag = ({ link, name }) => {
+      let href = link.replace("%s", query);
+      // console.log("href:", href);
       return `<a href='${href}' target='_blank' >${name}</a>`;
     };
     const tags = siteList
