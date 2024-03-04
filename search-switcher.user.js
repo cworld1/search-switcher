@@ -42,15 +42,8 @@
       host: "google.com",
       link: "https://www.google.com/search?q=%s",
       key: "q",
-      element: "#top_nav #hdtb-msb",
-      hide: false,
-    },
-    {
-      name: "Github",
-      host: "github.com",
-      link: "https://github.com/search?q=%s",
-      key: "q",
-      element: ".search-with-dialog",
+      element:
+        'div[role="navigation"]>div:nth-child(1)>div>h1+div>div>div[jsslot]',
       hide: false,
     },
     {
@@ -62,6 +55,14 @@
       hide: false,
     },
     {
+      name: "Github",
+      host: "github.com",
+      link: "https://github.com/search?q=%s",
+      key: "q",
+      element: ".AppHeader-search",
+      hide: false,
+    },
+    {
       name: "Bili",
       host: "bilibili.com",
       link: "https://search.bilibili.com/all?keyword=%s",
@@ -69,14 +70,14 @@
       element: ".vui_tabs--navbar .vui_tabs--nav",
       hide: false,
     },
-    {
+    /* {
       name: "Yandex",
       host: "yandex.com",
       link: "https://yandex.com/search/?text=%s",
       key: "text",
       element: ".navigation .navigation__region",
       hide: false,
-    },
+    }, */
   ];
 
   const css = `
@@ -96,12 +97,14 @@
         padding: 0 10px;
       }
       .search-switcher.Baidu a {
-        padding: 0;
-        background: transparent;
+        padding: 0 8px;
       }
-      .search-switcher.Yandex {
-        position: relative;
-        top: 3px;
+      .search-switcher.Github a {
+        border: var(--borderWidth-thin, 1px) solid var(--borderColor-default, var(--color-border-default));
+        border-radius: var(--borderRadius-medium, 6px);
+        background: transparent;
+        padding: 4.5px 8px;
+        margin: 0 4px !important;
       }
       `;
 
