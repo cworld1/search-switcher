@@ -29,22 +29,24 @@
 
 {
   const sites = [
+    // Add your own search engine here, or change the order
+    // WARN: BACKUP the list before update the script
     {
-      name: "Bing", // 显示名称
-      host: "bing.com", // 应用域名（新增的话上面的 include 也要写）
-      link: "https://www.bing.com/search?q=%s", // 跳转的搜索链接（用 %s 替代关键词）
-      key: "q", // 关键词对应的键，用于提取关键词（不写的话默认为q）
-      element: ".b_scopebar ul", // 插入位置
-      hide: false, // 是否隐藏
+      name: "Bing", // display name
+      host: "bing.com", // Host name (the "@include" above should be added also)
+      link: "https://www.bing.com/search?q=%s", // search link
+      key: "q", // the key of keyword in searching links
+      element: ".b_scopebar ul", // switcher element that neeed to insert in
+      hide: false, // hide or not
     },
     {
-      name: "Google",
-      host: "google.com",
-      link: "https://www.google.com/search?q=%s",
-      key: "q",
+      name: "Google", // 显示名称
+      host: "google.com", // 应用域名（新增的话上面的 include 也要写）
+      link: "https://www.google.com/search?q=%s", // 跳转的搜索链接（用 %s 替代关键词）
+      key: "q", // 关键词对应的键，用于提取关键词（不写的话默认为q）
       element:
-        'div[role="navigation"]>div:nth-child(1)>div>h1+div>div>div[jsslot]',
-      hide: false,
+        'div[role="navigation"]>div:nth-child(1)>div>h1+div>div>div[jsslot]', // 插入位置
+      hide: false, // 是否隐藏
     },
     {
       name: "Baidu",
