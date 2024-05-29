@@ -37,7 +37,7 @@
       link: "https://www.bing.com/search?q=%s", // search link
       key: "q", // the key of keyword in searching links
       element: ".b_scopebar ul", // switcher element that neeed to insert in
-      hide: false, // hide or not
+      enable: true, // enable or not
     },
     {
       name: "Google", // 显示名称
@@ -45,24 +45,21 @@
       link: "https://www.google.com/search?q=%s", // 跳转的搜索链接（用 %s 替代关键词）
       key: "q", // 关键词对应的键，用于提取关键词（不写的话默认为q）
       element:
-        'div[role="navigation"]>div:nth-child(1)>div>h1+div>div>div[jsslot]', // 插入位置
-      hide: false, // 是否隐藏
+      enable: true, // 是否启用（默认启用可以不写）
+      style:
     },
     {
       name: "Baidu",
       host: "baidu.com",
       link: "https://www.baidu.com/s?wd=%s",
-      element: ".wrapper_new #s_tab .s_tab_inner",
       key: "wd",
-      hide: false,
+      element: ".wrapper_new #s_tab .s_tab_inner",
     },
     {
       name: "Github",
       host: "github.com",
       link: "https://github.com/search?q=%s",
-      key: "q",
       element: ".AppHeader-search",
-      hide: false,
     },
     {
       name: "Bili",
@@ -70,7 +67,6 @@
       link: "https://search.bilibili.com/all?keyword=%s",
       key: "keyword",
       element: ".vui_tabs--navbar .vui_tabs--nav",
-      hide: false,
     },
     /* {
       name: "Yandex",
@@ -78,7 +74,6 @@
       link: "https://yandex.com/search/?text=%s",
       key: "text",
       element: ".navigation .navigation__region",
-      hide: false,
     }, */
   ];
 
@@ -114,20 +109,12 @@
       `;
 
   function setup() {
+    // Query sites
     // console.log("location:", location.href);
-    let curSite;
-    for (let site of sites) {
-      if (
-        location.hostname === site.host ||
-        location.hostname.endsWith("." + site.host)
-      ) {
-        curSite = site;
-        break;
-      }
-    }
-    if (!curSite) return;
-    let siteList = sites.filter(
-      ({ host, hide }) => !location.hostname.includes(host) && !hide
+    const curSite = sites.find(({ host }) => location.hostname.includes(host));
+    if (!curSite) return false;
+    const siteList = sites.filter(
+      ({ name, enable }) => curSite.name != name && enable != false
     );
     // console.log("siteList:", siteList);
     let query = new URLSearchParams(location.search).get(curSite.key || "q");
