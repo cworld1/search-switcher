@@ -117,40 +117,26 @@
       ({ name, enable }) => curSite.name != name && enable != false
     );
     // console.log("siteList:", siteList);
-    let query = new URLSearchParams(location.search).get(curSite.key || "q");
+
+    // Get queries
+    const query = new URLSearchParams(location.search).get(curSite.key || "q");
     // console.log("site:", curSite, ",query:", query);
-    if (query == null) {
-      return;
-    }
-    let body = document.body;
-    if (body == undefined) {
-      return;
-    }
-    let switcherParentId = "search-switcher-parent";
-    let switcherParent = document.getElementById(switcherParentId);
-    if (switcherParent == undefined) {
-      // 样式
+    if (!query) return false;
+
       const style = document.createElement("style");
       style.innerHTML = css;
       body.appendChild(style);
       // 生成切换框
       switcherParent = document.createElement("div");
       switcherParent.setAttribute("id", switcherParentId);
-      // console.log("body.appendChild:", switcherParent);
-      const parentElement = document.querySelector(curSite.element);
-      if (!parentElement) return;
-      parentElement.appendChild(switcherParent);
-    }
-    const siteTag = ({ link, name }) => {
-      let href = link.replace("%s", query);
-      // console.log("href:", href);
-      return `<a href='${href}' target='_blank' >${name}</a>`;
-    };
+    // Fill the content
     const tags = siteList
-      .filter(({ hidden }) => !hidden)
-      .map(siteTag)
+      .map(
+        ({ link, name }) =>
+          `<a href='${link.replace("%s", query)}' target='_blank' >${name}</a>`
+      )
       .join("");
-
+    // console.log("siteList:", tags);
     switcherParent.innerHTML = `
             <div id='search-switcher' class='search-switcher ${curSite.name}'>
                 <div id='search-list' class="search-list">${tags}</div>
