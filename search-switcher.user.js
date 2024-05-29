@@ -112,7 +112,7 @@
         background-color: #ffffff1a;
         text-decoration: none;
         border-radius: 100px;
-        color: #a5b9c6;
+        color: #7e8991;
         display: inline-block;
       }
       `;
