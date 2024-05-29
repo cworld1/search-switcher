@@ -109,6 +109,9 @@
       `;
 
   function setup() {
+    const switcherParentId = "search-switcher-parent";
+    if (document.getElementById(switcherParentId)) return true;
+
     // Query sites
     // console.log("location:", location.href);
     const curSite = sites.find(({ host }) => location.hostname.includes(host));
@@ -142,18 +145,20 @@
                 <div id='search-list' class="search-list">${tags}</div>
             </div>
         `;
-    // console.log("switcherParent:", switcherParent);
+    document.querySelector(curSite.element)?.appendChild(switcherParent);
+    // console.log(curSite.element + ".appendChild:", switcherParent);
   }
 
-  let _href = "";
-  !(function init() {
+  (function init() {
+    let _href = ""; // Declare and initialize _href
     var current_href = location.href;
-    if (_href != current_href) {
-      setup();
+
+    if (_href !== null && _href !== current_href) {
+      // Check if _href is not null and different from current_href
+      if (setup()) return;
       _href = current_href;
     }
     setTimeout(init, 2000);
-    return true;
   })();
 }
 // end userScript
