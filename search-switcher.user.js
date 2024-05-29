@@ -29,12 +29,40 @@
 
 {
   const sites = [
-    // Add your own search engine here, or change the order
+    // Add your own search engine here, or change the order. * config must be filled
     // WARN: BACKUP the list before update the script
     {
+      // * Display name
+      name: "Bing",
+      // * Host name (the "@include" above should be added also)
+      host: "bing.com",
+      // * switcher element that neeed to insert in
+      element: ".b_scopebar ul",
+      // * Search link that jump to (replace keywords with %s)
+      link: "https://www.bing.com/search?q=%s",
+      // the key of keyword in searching links（Defaults to q if not set）
+      key: "q",
+      // Defaults to true if not set, hiding only disappears in the
+      // jump list of regular search, panel will still be shown under the corresponding site
+      enable: true,
+      // Custom styles (applied to a tag)
       style: "padding: 0 10px;",
     },
+    {
+      // * 显示名称
+      name: "Google",
+      // * 应用域名（新增的话上面的 include 也要写）
+      host: "google.com",
+      // * 面板插入位置
       element:
+        '#cnt > div > div[role="navigation"] > div >div > div[data-st-cnt="mode"] > div[role="navigation"] > div >div >div > div > div[role="list"]',
+      // * 跳转的搜索链接（用 % s 替代关键词）
+      link: "https://www.google.com/search?q=%s",
+      // 关键词对应的键，用于提取关键词（不写默认为 q）
+      key: "q",
+      // 是否启用（不写默认为 true，隐藏仅在常规搜索的跳转列表里消失，对应站点下仍会展示面板）
+      enable: true,
+      // 自定义样式（应用到 a 标签）
       style: "padding:10px 14px;border-radius:20px;border:1px solid #dadce0;",
     },
     {
@@ -108,7 +136,7 @@
     if (!query) return false;
 
     // Setup styles
-      const style = document.createElement("style");
+    const style = document.createElement("style");
     style.innerHTML =
       css +
       (curSite.style
@@ -119,7 +147,7 @@
 
     // Create element
     const switcherParent = document.createElement("div");
-      switcherParent.setAttribute("id", switcherParentId);
+    switcherParent.setAttribute("id", switcherParentId);
     // Fill the content
     const tags = siteList
       .map(
