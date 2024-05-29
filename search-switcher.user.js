@@ -32,48 +32,43 @@
     // Add your own search engine here, or change the order
     // WARN: BACKUP the list before update the script
     {
-      name: "Bing", // display name
-      host: "bing.com", // Host name (the "@include" above should be added also)
-      link: "https://www.bing.com/search?q=%s", // search link
-      key: "q", // the key of keyword in searching links
-      element: ".b_scopebar ul", // switcher element that neeed to insert in
-      enable: true, // enable or not
+      style: "padding: 0 10px;",
     },
-    {
-      name: "Google", // 显示名称
-      host: "google.com", // 应用域名（新增的话上面的 include 也要写）
-      link: "https://www.google.com/search?q=%s", // 跳转的搜索链接（用 %s 替代关键词）
-      key: "q", // 关键词对应的键，用于提取关键词（不写的话默认为q）
       element:
-      enable: true, // 是否启用（默认启用可以不写）
-      style:
+      style: "padding:10px 14px;border-radius:20px;border:1px solid #dadce0;",
     },
     {
       name: "Baidu",
       host: "baidu.com",
+      element: ".wrapper_new #s_tab .s_tab_inner",
       link: "https://www.baidu.com/s?wd=%s",
       key: "wd",
-      element: ".wrapper_new #s_tab .s_tab_inner",
+      style: "padding: 0 8px",
     },
     {
       name: "Github",
       host: "github.com",
-      link: "https://github.com/search?q=%s",
       element: ".AppHeader-search",
+      link: "https://github.com/search?q=%s",
+      style: `border: var(--borderWidth-thin, 1px) solid var(--borderColor-default, var(--color-border-default));
+        border-radius: var(--borderRadius-medium, 6px);
+        background: transparent;
+        padding: 4.5px 8px;
+        margin: 0 4px !important;`,
     },
     {
       name: "Bili",
       host: "bilibili.com",
+      element: ".vui_tabs--navbar .vui_tabs--nav",
       link: "https://search.bilibili.com/all?keyword=%s",
       key: "keyword",
-      element: ".vui_tabs--navbar .vui_tabs--nav",
     },
     /* {
       name: "Yandex",
       host: "yandex.com",
+      element: ".navigation .navigation__region",
       link: "https://yandex.com/search/?text=%s",
       key: "text",
-      element: ".navigation .navigation__region",
     }, */
   ];
 
@@ -91,20 +86,6 @@
         border-radius: 100px;
         color: #a5b9c6;
         display: inline-block;
-      }
-
-      .search-switcher.Bing a {
-        padding: 0 10px;
-      }
-      .search-switcher.Baidu a {
-        padding: 0 8px;
-      }
-      .search-switcher.Github a {
-        border: var(--borderWidth-thin, 1px) solid var(--borderColor-default, var(--color-border-default));
-        border-radius: var(--borderRadius-medium, 6px);
-        background: transparent;
-        padding: 4.5px 8px;
-        margin: 0 4px !important;
       }
       `;
 
@@ -126,11 +107,18 @@
     // console.log("site:", curSite, ",query:", query);
     if (!query) return false;
 
+    // Setup styles
       const style = document.createElement("style");
-      style.innerHTML = css;
-      body.appendChild(style);
-      // 生成切换框
-      switcherParent = document.createElement("div");
+    style.innerHTML =
+      css +
+      (curSite.style
+        ? `.search-switcher.${curSite.name} a{${curSite.style}}`
+        : "");
+    console.log("style:", style.innerHTML);
+    document.body.appendChild(style);
+
+    // Create element
+    const switcherParent = document.createElement("div");
       switcherParent.setAttribute("id", switcherParentId);
     // Fill the content
     const tags = siteList
