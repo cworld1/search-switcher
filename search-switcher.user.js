@@ -7,10 +7,10 @@
 // @description:zh-TW   在常用的搜索引擎頁面中添加互相切換的按鈕。
 // @author              CWorld
 // @icon                https://www.freeiconspng.com/uploads/search-icon-png-21.png
-// @license             MIT
+// @license             GPL
 // @date                01/06/2023
-// @modified            03/04/2024
-// @version             2.0.0
+// @modified            05/29/2024
+// @version             2.2.0
 // @namespace           https://blog.cworld.top
 // @downloadURL         https://raw.githubusercontent.com/cworld1/search-switcher/main/search-switcher.user.js
 // @updateURL           https://raw.githubusercontent.com/cworld1/search-switcher/main/search-switcher.user.js
