@@ -18,11 +18,11 @@ If you need to edit the search supporting-list, you can edit script by yourself.
 
 ## Screenshot
 
-![image](https://user-images.githubusercontent.com/37377181/211086887-f47036e4-e8f5-4935-86ce-379e7d448857.png)
+![image](<src/Screenshot 2024-05-29 at 17-01-05 cworld1 search-switcher - Google Search.png>)
 
-![image](https://user-images.githubusercontent.com/37377181/211086950-5dc20b7f-0756-430b-8474-ae93927b9d3a.png)
+![image](<src/Screenshot 2024-05-29 at 17-04-37 cworld1 search-switcher - Bing.png>)
 
-![image](https://user-images.githubusercontent.com/37377181/211086993-cfa3144a-05a4-40b1-b86e-66991d7fe166.png)
+![image](<src/Screenshot 2024-05-29 at 17-05-18 cworld1 search-switcher_百度搜索.png>)
 
 ## License
 
