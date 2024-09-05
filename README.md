@@ -26,6 +26,16 @@ Then click the download button below:
 
 ## Configs
 
+Current support:
+
+- Bing
+- Google (very unstable because of A/B test)
+- Baidu
+- DuckDuckGo
+- Github
+- Bilibili
+- Yandex
+
 If you need to edit the search supporting-list, you can edit script by yourself.
 
 Config your sites like this:
@@ -54,6 +64,8 @@ const sites = [
 ```
 
 But don't forget to add the `@include` domain to make sure it works.
+
+> [!NOTE] You may need to backup site settings before you update the script.
 
 ## Contributions
 
