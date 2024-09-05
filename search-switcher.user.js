@@ -22,6 +22,7 @@
 // @include             https://www.google.com/search?*
 // @include             https://www.google.com.hk/search?*
 // @include             https://yandex.com/search/?*
+// @include             https://duckduckgo.com/?*
 // @include             /^https?://[a-z]+\.google\.[a-z,\.]+/.+$/
 // @grant               none
 // @run-at              document_body
@@ -74,6 +75,17 @@
       style: "padding: 0 8px",
     },
     {
+      name: "DDG",
+      host: "duckduckgo.com",
+      // element: "#react-duckbar > div > div > section > nav > ul:nth-child(1)",
+      element: '#react-layout > div > div > div[data-testid="web-vertical"] > div:nth-child(1) > div',
+      link: "https://duckduckgo.com/?q=%s",
+      style: `padding: 2px 8px;
+        border-radius: var(--default-border-radius);
+        background-color: #ffffff0a;
+        `,
+    },
+    {
       name: "Github",
       host: "github.com",
       element: ".AppHeader-search",
@@ -90,14 +102,16 @@
       element: ".vui_tabs--navbar .vui_tabs--nav",
       link: "https://search.bilibili.com/all?keyword=%s",
       key: "keyword",
+      enable: false,
     },
-    /* {
+    {
       name: "Yandex",
       host: "yandex.com",
       element: ".navigation .navigation__region",
       link: "https://yandex.com/search/?text=%s",
       key: "text",
-    }, */
+      enable: false,
+    },
   ];
 
   const css = `
