@@ -56,7 +56,7 @@
       host: "google.com",
       // * 面板插入位置
       element:
-        '#cnt > div > div[role="navigation"] > div >div > div[data-st-cnt="mode"] > div[role="navigation"] > div >div >div > div > div[role="list"]',
+        'div[role="navigation"][data-st-tgt="mode"] div[role="list"]',
       // * 跳转的搜索链接（用 % s 替代关键词）
       link: "https://www.google.com/search?q=%s",
       // 关键词对应的键，用于提取关键词（不写默认为 q）
@@ -64,7 +64,7 @@
       // 是否启用（不写默认为 true，隐藏仅在常规搜索的跳转列表里消失，对应站点下仍会展示面板）
       enable: true,
       // 自定义样式（应用到 a 标签）
-      style: "padding:10px 14px;border-radius:20px;border:1px solid #dadce0;",
+      style: "padding:5px 8px;border-radius:20px;border:1px solid #dadce0;",
     },
     {
       name: "Baidu",
