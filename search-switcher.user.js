@@ -11,7 +11,8 @@
 // @date                01/06/2023
 // @modified            05/29/2024
 // @version             2.2.0
-// @namespace           https://blog.cworld.top
+// @namespace           https://cworld0.com/
+// @homepage            https://github.com/cworld1/search-switcher
 // @downloadURL         https://raw.githubusercontent.com/cworld1/search-switcher/main/search-switcher.user.js
 // @updateURL           https://raw.githubusercontent.com/cworld1/search-switcher/main/search-switcher.user.js
 // @include             https://www.baidu.com/s?*
@@ -80,10 +81,7 @@
       // element: "#react-duckbar > div > div > section > nav > ul:nth-child(1)",
       element: '#react-layout > div > div > div[data-testid="web-vertical"] > div:nth-child(1) > div',
       link: "https://duckduckgo.com/?q=%s",
-      style: `padding: 2px 8px;
-        border-radius: var(--default-border-radius);
-        background-color: #ffffff0a;
-        `,
+      style: "padding:2px 8px;border-radius:var(--default-border-radius);background-color: #ffffff0a",
     },
     {
       name: "Github",
