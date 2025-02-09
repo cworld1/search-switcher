@@ -9,8 +9,8 @@
 // @icon                https://www.freeiconspng.com/uploads/search-icon-png-21.png
 // @license             GPL
 // @date                01/06/2023
-// @modified            05/29/2024
-// @version             2.2.0
+// @modified            02/10/2025
+// @version             2.2.1
 // @namespace           https://cworld0.com/
 // @homepage            https://github.com/cworld1/search-switcher
 // @downloadURL         https://raw.githubusercontent.com/cworld1/search-switcher/main/search-switcher.user.js
@@ -35,59 +35,59 @@
     // WARN: BACKUP the list before update the script
     {
       // * Display name
-      name: "Bing",
+      name: 'Bing',
       // * Host name (the "@include" above should be added also)
-      host: "bing.com",
+      host: 'bing.com',
       // * switcher element that neeed to insert in
-      element: ".b_scopebar ul",
+      element: '.b_scopebar ul',
       // * Search link that jump to (replace keywords with %s)
-      link: "https://www.bing.com/search?q=%s",
+      link: 'https://www.bing.com/search?q=%s',
       // the key of keyword in searching links（Defaults to q if not set）
-      key: "q",
+      key: 'q',
       // Defaults to true if not set, hiding only disappears in the
       // jump list of regular search, panel will still be shown under the corresponding site
       enable: true,
       // Custom styles (applied to a tag)
-      style: "padding: 0 10px;",
+      style: 'padding:0 10px',
     },
     {
       // * 显示名称
-      name: "Google",
+      name: 'Google',
       // * 应用域名（新增的话上面的 include 也要写）
-      host: "google.com",
+      host: 'google.com',
       // * 面板插入位置
       element:
         'div[role="navigation"][data-st-tgt="mode"] div[role="list"]',
       // * 跳转的搜索链接（用 % s 替代关键词）
-      link: "https://www.google.com/search?q=%s",
+      link: 'https://www.google.com/search?q=%s',
       // 关键词对应的键，用于提取关键词（不写默认为 q）
-      key: "q",
+      key: 'q',
       // 是否启用（不写默认为 true，隐藏仅在常规搜索的跳转列表里消失，对应站点下仍会展示面板）
       enable: true,
       // 自定义样式（应用到 a 标签）
-      style: "padding:5px 8px;border-radius:20px;border:1px solid #dadce0;",
+      style: 'padding:5px 8px;border-radius:20px;border:1px solid #dadce0',
     },
     {
-      name: "Baidu",
-      host: "baidu.com",
-      element: ".wrapper_new #s_tab .s_tab_inner",
-      link: "https://www.baidu.com/s?wd=%s",
-      key: "wd",
-      style: "padding: 0 8px",
+      name: 'Baidu',
+      host: 'baidu.com',
+      element: '.wrapper_new #s_tab .s_tab_inner',
+      link: 'https://www.baidu.com/s?wd=%s',
+      key: 'wd',
+      style: 'padding: 0 8px',
     },
     {
-      name: "DDG",
-      host: "duckduckgo.com",
-      // element: "#react-duckbar > div > div > section > nav > ul:nth-child(1)",
-      element: '#react-layout > div > div > div[data-testid="web-vertical"] > div:nth-child(1) > div',
-      link: "https://duckduckgo.com/?q=%s",
-      style: "padding:2px 8px;border-radius:var(--default-border-radius);background-color: #ffffff0a",
+      name: 'DDG',
+      host: 'duckduckgo.com',
+      element: '#react-duckbar > div > div > section > nav > ul:nth-child(1)',
+      // element: '#react-layout > div > div > div[data-testid="web-vertical"] > div:nth-child(1) > div',
+      link: 'https://duckduckgo.com/?q=%s',
+      style: 'padding:0 2px;background:none;color:var(--sds-color-text-link-02);font-weight:600',
     },
     {
-      name: "Github",
-      host: "github.com",
-      element: ".AppHeader-search",
-      link: "https://github.com/search?q=%s",
+      name: 'Github',
+      host: 'github.com',
+      element: '.AppHeader-search',
+      link: 'https://github.com/search?q=%s',
       style: `border: var(--borderWidth-thin, 1px) solid var(--borderColor-default, var(--color-border-default));
         border-radius: var(--borderRadius-medium, 6px);
         background: transparent;
@@ -95,19 +95,19 @@
         margin: 0 4px !important;`,
     },
     {
-      name: "Bili",
-      host: "bilibili.com",
-      element: ".vui_tabs--navbar .vui_tabs--nav",
-      link: "https://search.bilibili.com/all?keyword=%s",
-      key: "keyword",
-      enable: false,
+      name: 'Bili',
+      host: 'bilibili.com',
+      element: '.vui_tabs--navbar .vui_tabs--nav',
+      link: 'https://search.bilibili.com/all?keyword=%s',
+      key: 'keyword',
+      enable: true,
     },
     {
-      name: "Yandex",
-      host: "yandex.com",
-      element: ".navigation .navigation__region",
-      link: "https://yandex.com/search/?text=%s",
-      key: "text",
+      name: 'Yandex',
+      host: 'yandex.com',
+      element: '.navigation .navigation__region',
+      link: 'https://yandex.com/search/?text=%s',
+      key: 'text',
       enable: false,
     },
   ];
@@ -130,55 +130,55 @@
       `;
 
   function setup() {
-    const switcherParentId = "search-switcher-parent";
+    const switcherParentId = 'search-switcher-parent';
     if (document.getElementById(switcherParentId)) return true;
 
     // Query sites
-    // console.log("location:", location.href);
+    // console.log('location:', location.href);
     const curSite = sites.find(({ host }) => location.hostname.includes(host));
     if (!curSite) return false;
     const siteList = sites.filter(
       ({ name, enable }) => curSite.name != name && enable != false
     );
-    // console.log("siteList:", siteList);
+    // console.log('siteList:', siteList);
 
     // Get queries
-    const query = new URLSearchParams(location.search).get(curSite.key || "q");
-    // console.log("site:", curSite, ",query:", query);
+    const query = new URLSearchParams(location.search).get(curSite.key || 'q');
+    // console.log('site:', curSite, ',query:', query);
     if (!query) return false;
 
     // Setup styles
-    const style = document.createElement("style");
+    const style = document.createElement('style');
     style.innerHTML =
       css +
       (curSite.style
         ? `.search-switcher.${curSite.name} a{${curSite.style}}`
-        : "");
-    console.log("style:", style.innerHTML);
+        : '');
+    // console.log('style:', style.innerHTML);
     document.body.appendChild(style);
 
     // Create element
-    const switcherParent = document.createElement("div");
-    switcherParent.setAttribute("id", switcherParentId);
+    const switcherParent = document.createElement('div');
+    switcherParent.setAttribute('id', switcherParentId);
     // Fill the content
     const tags = siteList
       .map(
         ({ link, name }) =>
-          `<a href='${link.replace("%s", query)}' target='_blank' >${name}</a>`
+          `<a href='${link.replace('%s', query)}' target='_blank' >${name}</a>`
       )
-      .join("");
-    // console.log("siteList:", tags);
+      .join('');
+    // console.log('siteList:', tags);
     switcherParent.innerHTML = `
             <div id='search-switcher' class='search-switcher ${curSite.name}'>
-                <div id='search-list' class="search-list">${tags}</div>
+                <div id='search-list' class='search-list'>${tags}</div>
             </div>
         `;
     document.querySelector(curSite.element)?.appendChild(switcherParent);
-    // console.log(curSite.element + ".appendChild:", switcherParent);
+    // console.log(curSite.element + '.appendChild:', switcherParent);
   }
 
   (function init() {
-    let _href = ""; // Declare and initialize _href
+    let _href = ''; // Declare and initialize _href
     var current_href = location.href;
 
     if (_href !== null && _href !== current_href) {
